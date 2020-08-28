@@ -6,13 +6,122 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="@string/result"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <TextView
+            android:id="@+id/result_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:textSize="24sp"
+            android:text="@string/result"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/result_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@id/result_text"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text=" 0" />
+
+        <EditText
+            android:id="@+id/second_operand"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="@string/please_enter_the_second_operand"
+            android:layout_margin="16dp"
+            android:inputType="numberDecimal"
+            app:layout_constraintTop_toBottomOf="@id/result_text"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/undo_btn"
+            />
+
+        <Button
+            android:id="@+id/undo_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:minWidth="50dp"
+            android:text="@string/undo"
+            android:textAllCaps="false"
+            app:layout_constraintTop_toBottomOf="@id/second_operand"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/plus_operand"/>
+
+        <Button
+            android:id="@+id/plus_operand"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:minWidth="50dp"
+            android:text="@string/plus"
+            app:layout_constraintTop_toBottomOf="@id/second_operand"
+            app:layout_constraintStart_toEndOf="@id/undo_btn"
+            app:layout_constraintEnd_toStartOf="@id/subtract_operand"/>
+
+        <Button
+            android:id="@+id/subtract_operand"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:minWidth="50dp"
+            android:text="@string/subtract"
+            app:layout_constraintTop_toBottomOf="@id/second_operand"
+            app:layout_constraintStart_toEndOf="@id/plus_operand"
+            app:layout_constraintEnd_toStartOf="@id/multiply_operand"/>
+
+        <Button
+            android:id="@+id/multiply_operand"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:minWidth="50dp"
+            android:text="@string/multiply"
+            app:layout_constraintTop_toBottomOf="@id/second_operand"
+            app:layout_constraintStart_toEndOf="@id/subtract_operand"
+            app:layout_constraintEnd_toStartOf="@id/divide_operand"/>
+
+        <Button
+            android:id="@+id/divide_operand"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:minWidth="50dp"
+            android:text="@string/divide"
+            app:layout_constraintTop_toBottomOf="@id/second_operand"
+            app:layout_constraintStart_toEndOf="@id/multiply_operand"
+            app:layout_constraintEnd_toStartOf="@id/equal_operand"/>
+
+        <Button
+            android:id="@+id/equal_operand"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:minWidth="50dp"
+            android:text="@string/equal"
+            app:layout_constraintTop_toBottomOf="@id/second_operand"
+            app:layout_constraintStart_toEndOf="@id/divide_operand"
+            app:layout_constraintEnd_toStartOf="@id/redo_btn"/>
+
+        <Button
+            android:id="@+id/redo_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:minWidth="50dp"
+            android:text="@string/redo"
+            android:textAllCaps="false"
+            app:layout_constraintTop_toBottomOf="@id/second_operand"
+            app:layout_constraintStart_toEndOf="@id/equal_operand"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
