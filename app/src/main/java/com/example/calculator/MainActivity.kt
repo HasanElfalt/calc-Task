@@ -67,7 +67,10 @@ class MainActivity : AppCompatActivity() {
 
             if(!stack.isEmpty()) result_value.text = stack.pop()?.operand.toString()
         }
-        
+        redo_btn.setOnClickListener {
+
+            if(!stack.isFull()) result_value.text = stack.redo()?.operand.toString()
+        }
     }
 
     private fun computeTheOperation() : String{

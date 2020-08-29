@@ -8,6 +8,9 @@ class Stack {
     fun isEmpty(): Boolean {
         return top <= 0
     }
+    fun isFull() : Boolean{
+        return top >= a.size-1
+    }
 
     fun push(x: Model): Boolean {
         return when {
@@ -41,12 +44,10 @@ class Stack {
         }
     }
 
-    fun peek(): Model? {
-        return if (top < 0) {
-            println("Stack Underflow")
-            null
-        } else {
-            a[top]
-        }
+    fun redo(): Model? {
+
+        top++
+        return a[top]
+
     }
 }
