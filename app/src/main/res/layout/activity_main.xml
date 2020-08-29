@@ -32,10 +32,11 @@
             android:layout_height="wrap_content"
             android:textStyle="bold"
             android:textSize="24sp"
+            android:text=" 0"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@id/result_text"
             app:layout_constraintTop_toTopOf="parent"
-            tools:text=" 0" />
+            />
 
         <EditText
             android:id="@+id/second_operand"
@@ -67,6 +68,7 @@
             android:layout_height="wrap_content"
             android:minWidth="50dp"
             android:text="@string/plus"
+            android:background="@android:color/white"
             app:layout_constraintTop_toBottomOf="@id/second_operand"
             app:layout_constraintStart_toEndOf="@id/undo_btn"
             app:layout_constraintEnd_toStartOf="@id/subtract_operand"/>
@@ -77,6 +79,7 @@
             android:layout_height="wrap_content"
             android:minWidth="50dp"
             android:text="@string/subtract"
+            android:background="@android:color/white"
             app:layout_constraintTop_toBottomOf="@id/second_operand"
             app:layout_constraintStart_toEndOf="@id/plus_operand"
             app:layout_constraintEnd_toStartOf="@id/multiply_operand"/>
@@ -87,6 +90,7 @@
             android:layout_height="wrap_content"
             android:minWidth="50dp"
             android:text="@string/multiply"
+            android:background="@android:color/white"
             app:layout_constraintTop_toBottomOf="@id/second_operand"
             app:layout_constraintStart_toEndOf="@id/subtract_operand"
             app:layout_constraintEnd_toStartOf="@id/divide_operand"/>
@@ -97,6 +101,7 @@
             android:layout_height="wrap_content"
             android:minWidth="50dp"
             android:text="@string/divide"
+            android:background="@android:color/white"
             app:layout_constraintTop_toBottomOf="@id/second_operand"
             app:layout_constraintStart_toEndOf="@id/multiply_operand"
             app:layout_constraintEnd_toStartOf="@id/equal_operand"/>
@@ -107,6 +112,7 @@
             android:layout_height="wrap_content"
             android:minWidth="50dp"
             android:text="@string/equal"
+            android:enabled="false"
             app:layout_constraintTop_toBottomOf="@id/second_operand"
             app:layout_constraintStart_toEndOf="@id/divide_operand"
             app:layout_constraintEnd_toStartOf="@id/redo_btn"/>
