@@ -54,6 +54,8 @@ class MainActivity : AppCompatActivity() {
         equal_operand.setOnClickListener {
 
             result_value.text = computeTheOperation()
+            second_operand.text.clear()
+            deselectButtons()
         }
     }
 
@@ -109,5 +111,11 @@ class MainActivity : AppCompatActivity() {
         subtract_operand.setBackgroundResource(0)
         multiply_operand.setBackgroundResource(0)
         divide_operand.setBackgroundResource(R.drawable.green_border)
+    }
+    private fun deselectButtons(){
+        plus_operand.setBackgroundResource(0)
+        subtract_operand.setBackgroundResource(0)
+        multiply_operand.setBackgroundResource(0)
+        divide_operand.setBackgroundResource(0)
     }
 }
