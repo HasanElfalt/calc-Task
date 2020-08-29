@@ -17,6 +17,8 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        stack.push(Model('+',0.0))
+
         plus_operand.setOnClickListener {
             operation = '+'
             selectPlus()
@@ -60,6 +62,10 @@ class MainActivity : AppCompatActivity() {
             deselectButtons()
 
             stack.push(Model(operation,result_value.text.toString().toDouble()))
+        }
+        undo_btn.setOnClickListener {
+
+            if(!stack.isEmpty()) result_value.text = stack.pop()?.operand.toString()
         }
         
     }

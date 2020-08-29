@@ -2,11 +2,11 @@ package com.example.calculator
 
 class Stack {
 
-    private var top = 0
+    private var top = -1
     var a = ArrayList<Model>()
 
     fun isEmpty(): Boolean {
-        return top < 0
+        return top <= 0
     }
 
     fun push(x: Model): Boolean {
@@ -15,7 +15,7 @@ class Stack {
                 println("Stack overflow")
                 false
             }
-            top < a.size -> {
+            top < a.size-1 -> {
                 a[top] = x
                 true
 
@@ -34,7 +34,7 @@ class Stack {
             println("Stack Underflow")
             null
         } else {
-            val x = a[top]
+            val x = a[top-1]
             top--
             println("$x popped from stack")
             x
