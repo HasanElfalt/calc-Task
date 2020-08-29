@@ -2,6 +2,8 @@ package com.example.calculator
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -42,9 +44,20 @@ class MainActivity : AppCompatActivity() {
             divide_operand.setBackgroundResource(R.drawable.green_border)
         }
 
-        if (second_operand.text.toString().isNotEmpty() && operation != null){
-            equal_operand.isEnabled = true
-        }
+        second_operand.addTextChangedListener(object : TextWatcher{
+            override fun afterTextChanged(p0: Editable?) {
+                checkEqualButton()
+            }
+
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+
+            }
+
+            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                
+            }
+
+        })
 
         equal_operand.setOnClickListener {
 
@@ -68,6 +81,12 @@ class MainActivity : AppCompatActivity() {
                     }
 
             }
+        }
+    }
+
+    fun checkEqualButton(){
+        if (second_operand.text.toString().isNotEmpty() && operation != null){
+            equal_operand.isEnabled = true
         }
     }
 }
