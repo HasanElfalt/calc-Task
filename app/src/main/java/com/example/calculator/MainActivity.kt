@@ -17,31 +17,23 @@ class MainActivity : AppCompatActivity() {
 
         plus_operand.setOnClickListener {
             operation = '+'
-            plus_operand.setBackgroundResource(R.drawable.green_border)
-            subtract_operand.setBackgroundResource(0)
-            multiply_operand.setBackgroundResource(0)
-            divide_operand.setBackgroundResource(0)
+            selectPlus()
+            checkEqualButton()
         }
         subtract_operand.setOnClickListener {
             operation = '-'
-            plus_operand.setBackgroundResource(0)
-            subtract_operand.setBackgroundResource(R.drawable.green_border)
-            multiply_operand.setBackgroundResource(0)
-            divide_operand.setBackgroundResource(0)
+            selectSubtract()
+            checkEqualButton()
         }
         multiply_operand.setOnClickListener {
             operation = '*'
-            plus_operand.setBackgroundResource(0)
-            subtract_operand.setBackgroundResource(0)
-            multiply_operand.setBackgroundResource(R.drawable.green_border)
-            divide_operand.setBackgroundResource(0)
+            selectMultiply()
+            checkEqualButton()
         }
         divide_operand.setOnClickListener {
             operation = '/'
-            plus_operand.setBackgroundResource(0)
-            subtract_operand.setBackgroundResource(0)
-            multiply_operand.setBackgroundResource(0)
-            divide_operand.setBackgroundResource(R.drawable.green_border)
+            selectDivision()
+            checkEqualButton()
         }
 
         second_operand.addTextChangedListener(object : TextWatcher{
@@ -61,32 +53,61 @@ class MainActivity : AppCompatActivity() {
 
         equal_operand.setOnClickListener {
 
-            when (operation){
+            result_value.text = computeTheOperation()
+        }
+    }
 
-                '+' -> result_value.text =
-                        (result_value.text.toString().toDouble() + second_operand.text.toString().toDouble()).toString()
+    private fun computeTheOperation() : String{
 
-                '-' ->result_value.text =
-                    (result_value.text.toString().toDouble() - second_operand.text.toString().toDouble()).toString()
+        return when (operation) {
 
-                '*' -> result_value.text =
-                    (result_value.text.toString().toDouble() * second_operand.text.toString().toDouble()).toString()
+            '+' -> (result_value.text.toString().toDouble() + second_operand.text.toString()
+                .toDouble()).toString()
 
-                '/' ->
-                    if(second_operand.text.toString().toDouble() == 0.0)
-                        Toast.makeText(this,"division by zero unacceptable", Toast.LENGTH_SHORT).show()
-                    else {
-                        result_value.text =
-                            (result_value.text.toString().toDouble() / second_operand.text.toString().toDouble()).toString()
-                    }
+            '-' -> (result_value.text.toString().toDouble() - second_operand.text.toString()
+                .toDouble()).toString()
 
-            }
+            '*' -> (result_value.text.toString().toDouble() * second_operand.text.toString()
+                .toDouble()).toString()
+
+            '/' ->
+                if (second_operand.text.toString().toDouble() == 0.0){
+                    Toast.makeText(this, "division by zero unacceptable", Toast.LENGTH_SHORT).show()
+                    result_value.text.toString()
+                }else {
+                    (result_value.text.toString().toDouble() / second_operand.text.toString().toDouble()).toString()
+                }
+
+            else -> result_value.text.toString()
         }
     }
 
     fun checkEqualButton(){
-        if (second_operand.text.toString().isNotEmpty() && operation != null){
-            equal_operand.isEnabled = true
-        }
+        equal_operand.isEnabled = second_operand.text.toString().isNotEmpty() && operation != null
+    }
+
+    private fun selectPlus(){
+        plus_operand.setBackgroundResource(R.drawable.green_border)
+        subtract_operand.setBackgroundResource(0)
+        multiply_operand.setBackgroundResource(0)
+        divide_operand.setBackgroundResource(0)
+    }
+    private fun selectSubtract(){
+        plus_operand.setBackgroundResource(0)
+        subtract_operand.setBackgroundResource(R.drawable.green_border)
+        multiply_operand.setBackgroundResource(0)
+        divide_operand.setBackgroundResource(0)
+    }
+    private fun selectMultiply(){
+        plus_operand.setBackgroundResource(0)
+        subtract_operand.setBackgroundResource(0)
+        multiply_operand.setBackgroundResource(R.drawable.green_border)
+        divide_operand.setBackgroundResource(0)
+    }
+    private fun selectDivision(){
+        plus_operand.setBackgroundResource(0)
+        subtract_operand.setBackgroundResource(0)
+        multiply_operand.setBackgroundResource(0)
+        divide_operand.setBackgroundResource(R.drawable.green_border)
     }
 }
