@@ -2,27 +2,30 @@ package com.example.calculator
 
 class Stack {
 
-    val MAX = 1000
-    var top = 0
-    var a = ArrayList<Model>(MAX)
-
-    fun Stack() {
-        top = -1
-    }
+    private var top = 0
+    var a = ArrayList<Model>()
 
     fun isEmpty(): Boolean {
         return top < 0
     }
 
     fun push(x: Model): Boolean {
-        return if (top >= MAX - 1) {
-            println("Stack overflow")
-            false
-        } else {
-            top++
-            a[top] = x
-            println("$x pushed into stack")
-            true
+        return when {
+            top > a.size -> {
+                println("Stack overflow")
+                false
+            }
+            top < a.size -> {
+                a[top] = x
+                true
+
+            }
+            else -> {
+                top++
+                a.add(x)
+                println("$x pushed into stack")
+                true
+            }
         }
     }
 

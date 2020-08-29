@@ -9,7 +9,9 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
-    var operation : Char? = null
+    private var operation : Char = ' '
+
+    private val stack = Stack()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -56,7 +58,10 @@ class MainActivity : AppCompatActivity() {
             result_value.text = computeTheOperation()
             second_operand.text.clear()
             deselectButtons()
+
+            stack.push(Model(operation,result_value.text.toString().toDouble()))
         }
+        
     }
 
     private fun computeTheOperation() : String{
@@ -85,7 +90,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun checkEqualButton(){
-        equal_operand.isEnabled = second_operand.text.toString().isNotEmpty() && operation != null
+        equal_operand.isEnabled = second_operand.text.toString().isNotEmpty() && operation.toString().trim() != ""
     }
 
     private fun selectPlus(){
